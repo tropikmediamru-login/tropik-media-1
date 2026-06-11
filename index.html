@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tropik Media — Creative Content. Strategic Impact.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5C400;
+    --black: #0B0B0B;
+    --dark: #1A1A1A;
+    --purple: #6B21A8;
+    --white: #F8F6F1;
+    --grey: #2a2a2a;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(11,11,11,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,196,0,0.1);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logo-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-wordmark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .nav-wordmark span {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--yellow);
+    margin-top: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--yellow);
+    color: var(--black) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #ffd93d !important; }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(245,196,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(107,33,168,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* big decorative T */
+  .hero-deco-t {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 55vw;
+    color: rgba(245,196,0,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 28px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--yellow);
+  }
+
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .hero-h1 .highlight { color: var(--yellow); }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(248,246,241,0.6);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    margin-top: 20px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); background: #ffd93d; }
+
+  .btn-outline {
+    border: 1.5px solid rgba(248,246,241,0.25);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* stats strip */
+  .stats-strip {
+    display: flex;
+    gap: 0;
+    margin-top: 80px;
+    border-top: 1px solid rgba(245,196,0,0.15);
+    padding-top: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .stat + .stat {
+    padding-left: 40px;
+    border-left: 1px solid rgba(245,196,0,0.15);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.4);
+  }
+
+  /* ---- SECTION COMMON ---- */
+  section { padding: 100px 60px; }
+
+  .section-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--yellow);
+  }
+
+  .section-h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 90px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .section-h2 .alt { color: var(--yellow); }
+
+  /* ---- SERVICES ---- */
+  #services { background: var(--black); }
+
+  .services-intro {
+    display: flex;
+    gap: 80px;
+    align-items: flex-end;
+    margin-bottom: 70px;
+  }
+
+  .services-intro-left { flex: 1; }
+
+  .services-intro-right {
+    flex: 0 0 380px;
+    font-size: 0.9rem;
+    color: rgba(248,246,241,0.5);
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 0.3s;
+    group: true;
+  }
+
+  .service-card:hover { background: #222; }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: rgba(245,196,0,0.07);
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-number { color: rgba(245,196,0,0.12); }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(245,196,0,0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-icon { background: rgba(245,196,0,0.18); }
+
+  .service-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--yellow);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    color: rgba(248,246,241,0.5);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .service-features li {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(248,246,241,0.6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .service-features li::before {
+    content: '✦';
+    color: var(--yellow);
+    font-size: 0.6rem;
+  }
+
+  .service-learn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 32px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .service-card:hover .service-learn { opacity: 1; transform: translateY(0); }
+
+  /* ---- WEBSITES SECTION ---- */
+  #websites {
+    background: var(--dark);
+    padding: 100px 60px;
+  }
+
+  .websites-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  .websites-scroll {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .site-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--grey);
+    cursor: pointer;
+    group: true;
+  }
+
+  .site-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .site-card:hover .site-card-inner { transform: scale(1.03); }
+
+  .site-browser-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 28px;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 5px;
+  }
+
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+
+  .site-url {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 2px 14px;
+    font-size: 0.58rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .site-visual {
+    margin-top: 28px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 8px;
+  }
+
+  .site-bar { border-radius: 3px; height: 8px; }
+  .site-bar.title { height: 14px; width: 55%; background: rgba(245,196,0,0.5); }
+  .site-bar.sub { width: 75%; background: rgba(255,255,255,0.15); }
+  .site-bar.short { width: 40%; background: rgba(255,255,255,0.1); }
+  .site-bar.line { width: 90%; background: rgba(255,255,255,0.08); }
+  .site-bar.img-placeholder { height: 50px; width: 100%; background: rgba(255,255,255,0.06); border-radius: 4px; margin-top: 4px; }
+
+  /* different color schemes per card */
+  .site-card:nth-child(1) .site-bar.title { background: rgba(245,196,0,0.6); }
+  .site-card:nth-child(2) .site-bar.title { background: rgba(107,33,168,0.6); }
+  .site-card:nth-child(3) .site-bar.title { background: rgba(40,200,100,0.5); }
+  .site-card:nth-child(4) .site-bar.title { background: rgba(239,68,68,0.5); }
+  .site-card:nth-child(5) .site-bar.title { background: rgba(59,130,246,0.5); }
+  .site-card:nth-child(6) .site-bar.title { background: rgba(245,196,0,0.5); }
+
+  .site-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(245,196,0,0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .site-card:hover .site-overlay { opacity: 1; }
+
+  .site-overlay-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--black);
+    letter-spacing: 1px;
+  }
+
+  .site-overlay-type {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(11,11,11,0.6);
+  }
+
+  /* ---- TRUSTED BY ---- */
+  #clients {
+    background: var(--black);
+    padding: 80px 60px;
+    text-align: center;
+  }
+
+  .clients-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.3);
+    margin-bottom: 40px;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .client-logo {
+    background: var(--dark);
+    padding: 28px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: rgba(248,246,241,0.25);
+    transition: color 0.3s, background 0.3s;
+    cursor: default;
+  }
+
+  .client-logo:hover {
+    color: var(--yellow);
+    background: #222;
+  }
+
+  /* ---- PRICING STRIP ---- */
+  #pricing {
+    background: var(--yellow);
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #pricing::before {
+    content: 'PLANS';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25vw;
+    color: rgba(0,0,0,0.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pricing-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+  }
+
+  .pricing-left { flex: 0 0 340px; }
+
+  .pricing-h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.9;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+
+  .pricing-sub {
+    font-size: 0.85rem;
+    color: rgba(11,11,11,0.6);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .pricing-note {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(11,11,11,0.5);
+  }
+
+  .pricing-cards {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .plan-card {
+    background: var(--black);
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .plan-card.featured { background: var(--dark); }
+
+  .plan-popular {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple);
+    color: var(--white);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  .plan-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .plan-period {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.3);
+    margin-bottom: 24px;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .plan-features li {
+    font-size: 0.73rem;
+    color: rgba(248,246,241,0.55);
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    line-height: 1.4;
+  }
+
+  .plan-features li::before {
+    content: '✦';
+    color: var(--yellow);
+    font-size: 0.55rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ---- CTA ---- */
+  #contact {
+    background: var(--black);
+    padding: 140px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(245,196,0,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cta-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+
+  .cta-h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 9vw, 140px);
+    line-height: 0.88;
+    color: var(--white);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-h2 .gold { color: var(--yellow); }
+
+  .cta-sub {
+    font-size: 0.9rem;
+    color: rgba(248,246,241,0.45);
+    max-width: 400px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-website {
+    margin-top: 70px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--dark);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(245,196,0,0.1);
+  }
+
+  .footer-left {
+    font-size: 0.7rem;
+    color: rgba(248,246,241,0.2);
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-h1 { animation: fadeUp 0.7s ease 0.2s both; }
+  .hero-tagline { animation: fadeUp 0.7s ease 0.35s both; }
+  .hero-actions { animation: fadeUp 0.7s ease 0.5s both; }
+  .stats-strip { animation: fadeUp 0.7s ease 0.65s both; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-wrap {
+    background: var(--yellow);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--black);
+    padding: 0 30px;
+  }
+
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--black);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 26 26" fill="none">
+        <text x="4" y="21" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#0B0B0B">T</text>
+      </svg>
+    </div>
+    <div class="nav-wordmark">
+      Tropik
+      <span>— MEDIA —</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#websites">Work</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco-t">T</div>
+  <div class="hero-content">
+    <div class="hero-tag">Mauritius's Growth Agency</div>
+    <h1 class="hero-h1">
+      Creative<br>
+      <span class="highlight">Content.</span><br>
+      Strategic<br>Impact.
+    </h1>
+    <p class="hero-tagline">We help SMEs across Mauritius grow through bold video, strategic social media, and websites that convert.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Local Businesses</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">74M</div>
+      <div class="stat-label">Impressions in 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98+</div>
+      <div class="stat-label">Viral Videos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Sectors Covered</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Video Production <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Website Development <span class="ticker-dot"></span></span>
+    <span class="ticker-item">AI Tools for SMEs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Paid Ads <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Content Strategy <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Drone Videography <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Brand Identity <span class="ticker-dot"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">Video Production <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Social Media Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Website Development <span class="ticker-dot"></span></span>
+    <span class="ticker-item">AI Tools for SMEs <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Paid Ads <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Content Strategy <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Drone Videography <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Brand Identity <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div class="services-intro-left">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-h2">Three Ways<br>We <span class="alt">Grow</span><br>Your Brand</h2>
+    </div>
+    <div class="services-intro-right">
+      From viral reels to sales-driving websites — we cover the full digital spectrum so you can focus on running your business.
+    </div>
+  </div>
+
+  <div class="services-grid">
+    <!-- Service 1: Video -->
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <div class="service-title">Marketing Videography</div>
+      <p class="service-desc">From snappy social reels to high-production brand films — video content that stops the scroll and starts the conversation.</p>
+      <ul class="service-features">
+        <li>Social Media Reels (15–45s)</li>
+        <li>High Quality Brand Films</li>
+        <li>Drone Aerial Videography</li>
+        <li>Shooting + Professional Editing</li>
+      </ul>
+      <a href="#contact" class="service-learn">Get a quote →</a>
+    </div>
+
+    <!-- Service 2: Social Media -->
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.4 5.4 3.9 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+      </div>
+      <div class="service-title">Social Media Management</div>
+      <p class="service-desc">Full-service management across TikTok, Instagram, Facebook & Google — with strategy that actually drives sales, not just likes.</p>
+      <ul class="service-features">
+        <li>Content Creation & Scheduling</li>
+        <li>Community Engagement & Replies</li>
+        <li>Paid Ads Optimisation</li>
+        <li>Monthly Performance Reports</li>
+      </ul>
+      <a href="#contact" class="service-learn">View plans →</a>
+    </div>
+
+    <!-- Service 3: Web + AI -->
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </div>
+      <div class="service-title">Websites & AI Tools</div>
+      <p class="service-desc">Professional, mobile-ready websites built to convert — plus AI tool integrations that save your SME hours every week.</p>
+      <ul class="service-features">
+        <li>Custom Website Development</li>
+        <li>Digital Landing Pages</li>
+        <li>AI Automation & Chatbots</li>
+        <li>E-commerce Integration</li>
+      </ul>
+      <a href="#contact" class="service-learn">Start a project →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITES WE BUILT -->
+<section id="websites">
+  <div class="websites-header">
+    <div>
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-h2">Sites We've<br><span class="alt">Built</span></h2>
+    </div>
+    <a href="#contact" class="btn-outline">Start Your Project</a>
+  </div>
+
+  <div class="websites-scroll">
+    <!-- Card 1 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#1a1200;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">nissan-mauritius.com</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar line"></div>
+          <div class="site-bar short"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Nissan</div>
+        <div class="site-overlay-type">Automotive · Landing Page</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#110a1a;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">home-avenue.mu</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar line"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Home Avenue</div>
+        <div class="site-overlay-type">Real Estate · Showcase</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#0a1a10;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">milaf.mu</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar line"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Milaf</div>
+        <div class="site-overlay-type">F&B · E-Commerce</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#1a0a0a;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">urban-mu.com</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar line"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Urban</div>
+        <div class="site-overlay-type">Lifestyle · Brand Site</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#0a1020;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">moderna-mu.com</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar line"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Pro Moderna</div>
+        <div class="site-overlay-type">Health · Services</div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="site-card">
+      <div class="site-card-inner" style="background:#141200;">
+        <div class="site-browser-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="site-url">magic-garden.mu</div>
+        </div>
+        <div class="site-visual">
+          <div class="site-bar title"></div>
+          <div class="site-bar sub"></div>
+          <div class="site-bar img-placeholder"></div>
+          <div class="site-bar short"></div>
+          <div class="site-bar line"></div>
+        </div>
+      </div>
+      <div class="site-overlay">
+        <div class="site-overlay-name">Magic Garden</div>
+        <div class="site-overlay-type">Events · Showcase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section id="clients">
+  <p class="clients-label">Trusted by businesses across Mauritius</p>
+  <div class="clients-grid">
+    <div class="client-logo">NISSAN</div>
+    <div class="client-logo">URBAN</div>
+    <div class="client-logo">HOME<br>AVENUE</div>
+    <div class="client-logo">MILAF</div>
+    <div class="client-logo">PRO<br>MODERNA</div>
+    <div class="client-logo">MAGIC<br>GARDEN</div>
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section id="contact">
+  <div class="cta-tag">Ready to grow?</div>
+  <h2 class="cta-h2">Let's Go<br><span class="gold">Tropik.</span></h2>
+  <p class="cta-sub">Book a free consultation with our strategy team and let's build something people talk about.</p>
+  <div class="cta-actions">
+    <a href="https://www.tropikmedialtd.com" class="btn-primary">Book a Meeting</a>
+    <a href="tel:+23000000000" class="btn-outline">Call Us</a>
+  </div>
+  <p class="cta-website">www.tropikmedialtd.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2025 Tropik Media Ltd · Mauritius</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#websites">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
