@@ -494,6 +494,8 @@
     aspect-ratio: 16/10;
     background: var(--grey);
     cursor: pointer;
+    display: block;
+    text-decoration: none;
     group: true;
   }
 
@@ -1101,96 +1103,93 @@
 
   <div class="websites-scroll">
     <!-- Card 1 -->
-    <div class="site-card">
+    <a class="site-card" href="https://sunsetcafe-restaurant.com" target="_blank" rel="noopener" aria-label="Visit Sunset Café">
       <div class="site-card-inner" style="background:#1a0d00; padding:0;">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
           <div class="site-url">sunsetcafe-restaurant.com</div>
         </div>
-        <img src="gifs/sunset-cafe.gif" class="site-gif" alt="Sunset Cafe">
+        <img src="gifs/sunset-cafe.jpg" class="site-gif" alt="Sunset Cafe">
       </div>
       <div class="site-overlay">
         <div class="site-overlay-name">Sunset Café</div>
         <div class="site-overlay-type">F&B · Restaurant</div>
       </div>
-    </div>
+    </a>
 
     <!-- Card 2 -->
-    <div class="site-card">
+    <a class="site-card" href="https://drinkbaie-website.vercel.app" target="_blank" rel="noopener" aria-label="Visit Drink Baie">
       <div class="site-card-inner" style="background:#0a1020; padding:0;">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
           <div class="site-url">drinkbaie-website.vercel.app</div>
         </div>
-        <img src="gifs/drink-baie.gif" class="site-gif" alt="Drink Baie">
+        <img src="gifs/drink-baie.jpg" class="site-gif" alt="Drink Baie">
       </div>
       <div class="site-overlay">
         <div class="site-overlay-name">Drink Baie</div>
         <div class="site-overlay-type">Drinks · Bar</div>
       </div>
-    </div>
+    </a>
 
     <!-- Card 3 -->
-    <div class="site-card">
+    <a class="site-card" href="https://home-avenue-ltd.vercel.app" target="_blank" rel="noopener" aria-label="Visit Home Avenue">
       <div class="site-card-inner" style="background:#110a1a; padding:0;">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
           <div class="site-url">home-avenue-ltd.vercel.app</div>
         </div>
-        <img src="gifs/home-avenue.gif" class="site-gif" alt="Home Avenue">
+        <img src="gifs/home-avenue.jpg" class="site-gif" alt="Home Avenue">
       </div>
       <div class="site-overlay">
         <div class="site-overlay-name">Home Avenue</div>
         <div class="site-overlay-type">Real Estate · Showcase</div>
       </div>
-    </div>
+    </a>
 
     <!-- Card 4 -->
-    <div class="site-card">
+    <a class="site-card" href="https://lolivia.vercel.app" target="_blank" rel="noopener" aria-label="Visit L'Olivia">
       <div class="site-card-inner" style="background:#0d1a0a; padding:0;">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
           <div class="site-url">lolivia.vercel.app</div>
         </div>
-        <img src="gifs/lolivia.gif" class="site-gif" alt="L'Olivia">
+        <img src="gifs/lolivia.jpg" class="site-gif" alt="L'Olivia">
       </div>
       <div class="site-overlay">
         <div class="site-overlay-name">L'Olivia</div>
         <div class="site-overlay-type">F&B · Restaurant</div>
       </div>
-    </div>
+    </a>
 
     <!-- Card 5 -->
-    <div class="site-card">
+    <a class="site-card" href="https://tacos-and-co-mu.vercel.app" target="_blank" rel="noopener" aria-label="Visit Tacos & Co">
       <div class="site-card-inner" style="background:#1a0800; padding:0;">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
           <div class="site-url">tacos-and-co-mu.vercel.app</div>
         </div>
-        <img src="gifs/tacos-co.gif" class="site-gif" alt="Tacos & Co">
+        <img src="gifs/tacos-co.jpg" class="site-gif" alt="Tacos & Co">
       </div>
       <div class="site-overlay">
         <div class="site-overlay-name">Tacos & Co</div>
         <div class="site-overlay-type">F&B · Restaurant</div>
       </div>
-    </div>
+    </a>
 
-    <!-- Card 6: placeholder -->
-    <div class="site-card" style="opacity:0.35; pointer-events:none;">
-      <div class="site-card-inner" style="background:#1a1a1a;">
+    <!-- Card 6: CTA -->
+    <a class="site-card" href="#contact" aria-label="Start your project">
+      <div class="site-card-inner" style="background:#111; border: 1.5px dashed rgba(245,196,0,0.25);">
         <div class="site-browser-bar">
           <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-          <div class="site-url">coming soon</div>
+          <div class="site-url">your-site.com</div>
         </div>
-        <div class="site-visual">
-          <div class="site-bar title"></div>
-          <div class="site-bar sub"></div>
-          <div class="site-bar img-placeholder"></div>
-          <div class="site-bar short"></div>
-          <div class="site-bar line"></div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; margin-top:28px;">
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:1.9rem; color:var(--yellow); letter-spacing:1px; text-align:center; line-height:1.1;">This Could Be<br>Your Site</div>
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(248,246,241,0.35);">Let's build it →</div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1198,12 +1197,12 @@
 <section id="clients">
   <p class="clients-label">Trusted by businesses across Mauritius</p>
   <div class="clients-grid">
-    <div class="client-logo">NISSAN</div>
-    <div class="client-logo">URBAN</div>
+    <div class="client-logo">SUNSET<br>CAFÉ</div>
+    <div class="client-logo">DRINK<br>BAIE</div>
     <div class="client-logo">HOME<br>AVENUE</div>
-    <div class="client-logo">MILAF</div>
-    <div class="client-logo">PRO<br>MODERNA</div>
-    <div class="client-logo">MAGIC<br>GARDEN</div>
+    <div class="client-logo">L'OLIVIA</div>
+    <div class="client-logo">TACOS<br>& CO</div>
+    <div class="client-logo" style="opacity:0.2; font-size:0.75rem; letter-spacing:1px;">YOUR<br>BRAND</div>
   </div>
 </section>
 
