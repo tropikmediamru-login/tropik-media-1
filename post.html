@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal — Tropik Media</title>
+<meta name="description" content="An article from the Tropik Media journal.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5C400;
+    --black: #0B0B0B;
+    --dark: #1A1A1A;
+    --purple: #6B21A8;
+    --white: #F8F6F1;
+    --grey: #2a2a2a;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(11,11,11,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,196,0,0.1);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon { width: 42px; height: 42px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .nav-logo-icon svg { width: 26px; height: 26px; }
+  .nav-wordmark { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--white); line-height: 1; }
+  .nav-wordmark span { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 4px; color: var(--yellow); margin-top: 1px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); text-decoration: none; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--yellow); }
+  .nav-links a.active { opacity: 1; color: var(--yellow); }
+  .nav-cta { background: var(--yellow); color: var(--black) !important; padding: 10px 24px; border-radius: 2px; opacity: 1 !important; font-weight: 700 !important; letter-spacing: 1.5px !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: #ffd93d !important; }
+
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 2px; text-transform: uppercase; padding: 16px 36px;
+    border: none; cursor: pointer; text-decoration: none; display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #ffd93d; }
+
+  /* ---- ARTICLE ---- */
+  .article-wrap { max-width: 760px; margin: 0 auto; padding: 150px 24px 90px; }
+
+  .back-link {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(248,246,241,0.45); text-decoration: none; transition: color 0.2s;
+    display: inline-block; margin-bottom: 34px;
+  }
+  .back-link:hover { color: var(--yellow); }
+
+  .article-meta {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 18px;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(248,246,241,0.4); }
+  .article-meta .muted { color: rgba(248,246,241,0.4); }
+
+  .article-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 0.95; letter-spacing: 1px; margin-bottom: 26px;
+  }
+
+  .article-cover {
+    width: 100%; border-radius: 4px; margin-bottom: 40px; display: block;
+    border: 1px solid rgba(248,246,241,0.08);
+  }
+
+  /* rich content */
+  .article-content { font-size: 1.05rem; line-height: 1.8; color: rgba(248,246,241,0.82); }
+  .article-content p { margin-bottom: 24px; }
+  .article-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 0.5px; color: var(--white); margin: 44px 0 18px; line-height: 1.05; }
+  .article-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.5px; color: var(--white); margin: 36px 0 14px; }
+  .article-content h4 { font-size: 1.15rem; font-weight: 700; color: var(--white); margin: 30px 0 12px; }
+  .article-content a { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
+  .article-content ul, .article-content ol { margin: 0 0 24px 1.3em; }
+  .article-content li { margin-bottom: 10px; }
+  .article-content blockquote {
+    border-left: 3px solid var(--yellow);
+    padding: 6px 0 6px 24px; margin: 0 0 26px;
+    color: var(--white); font-style: italic;
+  }
+  .article-content figure { margin: 0 0 28px; }
+  .article-content img { width: 100%; border-radius: 4px; display: block; border: 1px solid rgba(248,246,241,0.08); }
+  .article-content hr { border: none; border-top: 1px solid rgba(245,196,0,0.2); margin: 36px 0; }
+  .article-content pre { background: var(--dark); padding: 18px; border-radius: 4px; overflow-x: auto; margin-bottom: 24px; font-size: 0.85rem; }
+
+  .article-cta {
+    margin-top: 60px; padding-top: 40px;
+    border-top: 1px solid rgba(245,196,0,0.15);
+    text-align: center;
+  }
+  .article-cta p { font-size: 0.95rem; color: rgba(248,246,241,0.55); margin-bottom: 22px; line-height: 1.6; }
+
+  /* states */
+  .blog-state { text-align: center; padding: 170px 24px 120px; color: rgba(248,246,241,0.5); min-height: 60vh; }
+  .blog-state h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--white); letter-spacing: 1px; margin-bottom: 12px; }
+  .blog-state p { font-size: 0.9rem; line-height: 1.7; max-width: 460px; margin: 0 auto 26px; }
+  .spinner { width: 40px; height: 40px; margin: 0 auto; border: 3px solid rgba(245,196,0,0.2); border-top-color: var(--yellow); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* footer */
+  footer { background: var(--dark); padding: 40px 60px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(245,196,0,0.1); }
+  .footer-left { font-size: 0.7rem; color: rgba(248,246,241,0.2); letter-spacing: 1px; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(248,246,241,0.25); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ---- MOBILE NAV (hamburger) ---- */
+  .nav-toggle { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+
+    .nav-toggle {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; padding: 11px;
+      background: none; border: none; cursor: pointer; z-index: 101;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); transition: transform .25s, opacity .25s; }
+    nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-links {
+      position: fixed; top: 0; right: 0;
+      height: 100vh; height: 100dvh; width: min(80vw, 320px);
+      flex-direction: column; align-items: stretch; justify-content: flex-start;
+      gap: 0; padding: 92px 30px 40px;
+      background: rgba(11,11,11,0.98); backdrop-filter: blur(14px);
+      border-left: 1px solid rgba(245,196,0,0.15);
+      transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    nav.open .nav-links { transform: translateX(0); }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 16px 0; font-size: 0.95rem; opacity: 1; border-bottom: 1px solid rgba(248,246,241,0.07); }
+    .nav-links a.nav-cta { color: var(--black) !important; text-align: center; margin-top: 20px; border-bottom: none; }
+
+    .article-wrap { padding: 120px 22px 80px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 22px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 26 26" fill="none">
+        <text x="4" y="21" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#0B0B0B">T</text>
+      </svg>
+    </div>
+    <div class="nav-wordmark">Tropik<span>— MEDIA —</span></div>
+  </a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#websites">Work</a></li>
+    <li><a href="/blog" class="active">Journal</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <article id="article" class="article-wrap" hidden>
+    <a href="/blog" class="back-link">← Back to journal</a>
+    <div id="article-meta" class="article-meta"></div>
+    <h1 id="article-title" class="article-title"></h1>
+    <img id="article-cover" class="article-cover" alt="" hidden>
+    <div id="article-content" class="article-content"></div>
+    <div class="article-cta">
+      <p>Like what you read? Let's create something people talk about.</p>
+      <a href="book.html" class="btn-primary">Book a Meeting</a>
+    </div>
+  </article>
+
+  <div id="state-loading" class="blog-state"><div class="spinner"></div></div>
+
+  <div id="state-error" class="blog-state" hidden>
+    <h2>Article Not Found</h2>
+    <p>This article may have moved or been unpublished.</p>
+    <a href="/blog" class="btn-primary">Back to Journal</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-left">© 2025 Tropik Media Ltd · Mauritius</div>
+  <ul class="footer-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#websites">Work</a></li>
+    <li><a href="/blog">Journal</a></li>
+    <li><a href="book.html">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  const article = document.getElementById('article');
+  const sLoading = document.getElementById('state-loading');
+  const sError = document.getElementById('state-error');
+
+  const escHtml = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const fmtDate = (iso) => {
+    if (!iso) return '';
+    try { return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); }
+    catch { return ''; }
+  };
+
+  function getSlug() {
+    const parts = location.pathname.split('/').filter(Boolean);
+    if (parts[0] === 'blog' && parts[1]) return decodeURIComponent(parts[1]);
+    const qs = new URLSearchParams(location.search);
+    return qs.get('slug') || '';
+  }
+
+  (async () => {
+    const slug = getSlug();
+    if (!slug) { sLoading.hidden = true; sError.hidden = false; return; }
+    try {
+      const res = await fetch('/api/posts?slug=' + encodeURIComponent(slug));
+      if (!res.ok) throw new Error('not found');
+      const { post } = await res.json();
+      if (!post) throw new Error('not found');
+
+      document.title = post.title + ' — Tropik Media';
+      const meta = document.getElementById('article-meta');
+      const bits = [];
+      if (post.date) bits.push('<span>' + escHtml(fmtDate(post.date)) + '</span>');
+      if (post.minutesToRead) bits.push('<span class="muted">' + escHtml(post.minutesToRead + ' min read') + '</span>');
+      meta.innerHTML = bits.join('<span class="dot"></span>');
+
+      document.getElementById('article-title').textContent = post.title;
+
+      if (post.coverImage) {
+        const cover = document.getElementById('article-cover');
+        cover.src = post.coverImage;
+        cover.alt = post.title;
+        cover.hidden = false;
+      }
+
+      // post.html comes pre-rendered + escaped from /api/posts (server-side Ricos -> HTML)
+      document.getElementById('article-content').innerHTML = post.html || ('<p>' + escHtml(post.excerpt || '') + '</p>');
+
+      sLoading.hidden = true;
+      article.hidden = false;
+    } catch (e) {
+      sLoading.hidden = true;
+      sError.hidden = false;
+    }
+  })();
+
+  // Mobile nav toggle
+  (function () {
+    var nav = document.querySelector('nav');
+    var toggle = nav && nav.querySelector('.nav-toggle');
+    if (!nav || !toggle) return;
+    function close() { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    nav.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', close); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+</script>
+
+</body>
+</html>

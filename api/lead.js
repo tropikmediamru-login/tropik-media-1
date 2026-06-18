@@ -46,7 +46,9 @@ module.exports = async (req, res) => {
             ...(phone ? { phones: { items: [{ phone, tag: 'MAIN' }] } } : {}),
             ...(company ? { company } : {}),
             extendedFields: {
-              items: { 'custom.project-details': message || '' },
+              // Key is provisioned on the Wix "Tropik Media" project (Wix appends a
+              // unique suffix to custom-field keys). See backend/backend-spec.md.
+              items: { 'custom.project-details-kcttddyvagvlqryswyt': message || '' },
             },
           },
         }),

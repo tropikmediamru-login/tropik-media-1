@@ -1,0 +1,14 @@
+# Tropik Media
+
+> Tropik Media is a creative content and growth marketing agency based in Mauritius. We help SMEs grow through bold video production, strategic social media management, and high-converting websites and AI tools.
+
+## Pages
+- [Home](https://www.tropikmedialtd.com/): Services (marketing videography, social media management, websites & AI tools), portfolio of client sites, pricing, and contact.
+- [Book a Meeting](https://www.tropikmedialtd.com/book.html): Request a free consultation; capture name, email, phone, company, and project details.
+
+## Blog
+- [Tropik Media Journal](https://www.tropikmedialtd.com/blog): Articles and insights on video, social media, websites, and growth for Mauritian businesses. Posts are authored by the Tropik Media team in Wix and published here; individual articles live at https://www.tropikmedialtd.com/blog/<post-slug>.
+
+## Contact
+- Website: https://www.tropikmedialtd.com
+- Location: Mauritius

@@ -1,0 +1,47 @@
+{
+  "wixProject": {
+    "name": "Tropik Media",
+    "siteId": "a895c48f-6677-4005-994f-aa58f23d2206",
+    "editorUrl": "https://editor.wix.com/edit/od/9070e40e-dd83-4a0d-9442-86e3e98a64fd?metaSiteId=a895c48f-6677-4005-994f-aa58f23d2206",
+    "previewUrl": "https://yadav360.wixsite.com/tropik-media",
+    "createdDate": "2026-06-18"
+  },
+  "apps": {
+    "blog": {
+      "installed": true,
+      "publishedPosts": 1,
+      "seededPost": {
+        "id": "2010b095-22dc-4ec2-995a-018d9f883e8f",
+        "title": "Welcome to the Tropik Media Blog",
+        "slug": "welcome-to-the-tropik-media-blog",
+        "status": "PUBLISHED",
+        "note": "Starter post in the agency's own voice — client may edit or delete."
+      },
+      "readEndpoints": {
+        "list": "GET https://www.wixapis.com/blog/v3/posts",
+        "getBySlug": "GET https://www.wixapis.com/blog/v3/posts/slugs/{slug}"
+      },
+      "scope": "BLOG.READ-PUBLICATION"
+    }
+  },
+  "crmContacts": {
+    "createEndpoint": "POST https://www.wixapis.com/contacts/v4/contacts",
+    "scope": "CONTACTS.MODIFY",
+    "extendedFields": [
+      {
+        "displayName": "Project Details",
+        "key": "custom.project-details-kcttddyvagvlqryswyt",
+        "dataType": "TEXT",
+        "fieldType": "USER_DEFINED",
+        "writtenBy": "api/lead.js (booking form)"
+      }
+    ]
+  },
+  "collections": [],
+  "stores": null,
+  "auth": {
+    "model": "server-side API key",
+    "headers": ["Authorization: <WIX_API_KEY>", "wix-site-id: a895c48f-6677-4005-994f-aa58f23d2206"],
+    "browserOAuthClient": false
+  }
+}
