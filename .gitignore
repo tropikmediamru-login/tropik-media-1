@@ -1,1 +1,5 @@
 .vercel
+
+# Source asset archives (not for deploy)
+*.zip
+_logos_extract/
