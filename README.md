@@ -135,3 +135,39 @@ Brand assets:
 
 The production domain is `www.tropikmedialtd.com`. Point it at the Vercel project under
 **Settings → Domains** and follow Vercel's DNS instructions.
+
+## Transferring this project
+
+This project is made up of **three separate assets** — the GitHub repo is only one of
+them. Hand over all three for the site to keep working.
+
+| Asset | What it holds | How it transfers |
+|---|---|---|
+| **GitHub repo** | All the code & docs. **No secrets are stored here.** | Transfer the repository to the new owner's GitHub account. |
+| **Vercel project** | Hosting + the environment variables. | New owner imports the repo into their Vercel account (no build step needed), then re-adds the env vars below and redeploys. **Env vars do *not* travel with a GitHub transfer.** |
+| **Wix project** | Blog content + incoming leads, and the API key. | Hand over the Wix project (or the new owner creates their own), then generate a fresh API key under the owning account. |
+
+### Environment variables needed after transfer
+
+Only **two**, both set in the **Vercel** project (Settings → Environment Variables) — never
+in the repo. A template is in [`backend/.env.example`](backend/.env.example).
+
+| Variable | Secret? | Value |
+|---|---|---|
+| `WIX_API_KEY` | **Yes** | API key from the Wix account, scopes **Manage Contacts** + **Read Blog**. Generate at https://manage.wix.com/account/api-keys. |
+| `WIX_SITE_ID` | No | The Wix site ID — see [`backend/.env.example`](backend/.env.example). Changes if the new owner uses their own Wix site. |
+
+If either variable is missing the site still runs — the blog shows an empty state and the
+booking form accepts submissions gracefully — so a missing key never takes the site down.
+
+### Handoff checklist
+
+1. Transfer the **GitHub repo** to the new owner.
+2. New owner imports it into **Vercel** (static site + `/api`, no build command — already
+   configured in [`vercel.json`](vercel.json)).
+3. Decide who owns the **Wix** project; generate an API key under that account.
+4. Add `WIX_API_KEY` + `WIX_SITE_ID` in the Vercel project, then **redeploy**.
+5. Point the domain (`www.tropikmedialtd.com`) at the new Vercel project (see above).
+
+See [`backend/backend-spec.md`](backend/backend-spec.md) for the full Wix integration
+details.
