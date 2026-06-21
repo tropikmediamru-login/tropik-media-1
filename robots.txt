@@ -4,4 +4,4 @@ Allow: /
 # Blog / Journal (posts authored in Wix, published here)
 Allow: /blog
 
-Sitemap: https://www.tropikmedialtd.com/sitemap.xml
+Sitemap: https://tropik-media.com/sitemap.xml

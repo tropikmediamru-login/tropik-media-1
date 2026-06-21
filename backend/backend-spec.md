@@ -23,7 +23,7 @@ Visitor ──▶ blog.html / book.html ──▶ /api/posts, /api/lead (Vercel 
 | **Dashboard / editor** | https://editor.wix.com/edit/od/9070e40e-dd83-4a0d-9442-86e3e98a64fd?metaSiteId=a895c48f-6677-4005-994f-aa58f23d2206 |
 | **Wix preview URL** | https://yadav360.wixsite.com/tropik-media |
 
-The public site runs on Vercel at `tropikmedialtd.com`. The Wix project is used purely
+The public site runs on Vercel at `tropik-media.com`. The Wix project is used purely
 as the **content backend**: you log into the Wix dashboard to write blog posts and to see
 incoming leads. The `Site ID` is not secret; the API key is.
 

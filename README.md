@@ -4,7 +4,7 @@ The marketing website for **Tropik Media**, a creative content and growth market
 agency based in Mauritius. It's a fast, static site with a Wix-powered blog and booking
 form, deployed on Vercel.
 
-**Live site:** https://www.tropikmedialtd.com
+**Live site:** https://tropik-media.com
 
 ---
 
@@ -133,7 +133,7 @@ Brand assets:
 
 ## Custom domain
 
-The production domain is `www.tropikmedialtd.com`. Point it at the Vercel project under
+The production domain is `tropik-media.com`. Point it at the Vercel project under
 **Settings → Domains** and follow Vercel's DNS instructions.
 
 ## Transferring this project
@@ -167,7 +167,7 @@ booking form accepts submissions gracefully — so a missing key never takes the
    configured in [`vercel.json`](vercel.json)).
 3. Decide who owns the **Wix** project; generate an API key under that account.
 4. Add `WIX_API_KEY` + `WIX_SITE_ID` in the Vercel project, then **redeploy**.
-5. Point the domain (`www.tropikmedialtd.com`) at the new Vercel project (see above).
+5. Point the domain (`tropik-media.com`) at the new Vercel project (see above).
 
 See [`backend/backend-spec.md`](backend/backend-spec.md) for the full Wix integration
 details.
