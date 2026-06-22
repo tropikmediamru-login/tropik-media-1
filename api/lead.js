@@ -5,9 +5,9 @@
 //   - Creates a new Wix contact tagged with the "Website Lead" label, with the
 //     project brief stored in the "Project Details" custom field.
 //   - If the email or phone already belongs to a contact, Wix rejects the create
-//     with 409 DUPLICATE_CONTACT_EXISTS. We then update that existing contact
-//     instead (re-apply the label + refresh the project details) so repeat
-//     submissions succeed rather than showing an error.
+//     with 409 DUPLICATE_CONTACT_EXISTS. The lead is already in the CRM, so we
+//     treat that as success (best-effort: re-apply the label + refresh the
+//     project details) instead of showing the visitor an error.
 //
 // Requires Vercel env vars WIX_API_KEY + WIX_SITE_ID. The API key needs the
 // "Wix Contacts & Members (Manage)" scope. If the vars are missing, the lead is
@@ -67,10 +67,11 @@ module.exports = async (req, res) => {
     });
 
     if (createRes.ok) {
-      return res.status(200).json({ ok: true, v: 'dbg2', path: 'created' });
+      return res.status(200).json({ ok: true });
     }
 
-    // 2) Already a contact? Update it instead of failing the submission.
+    // 2) Already a contact? The lead is captured — report success and best-effort
+    //    re-tag, so a returning visitor never sees an error.
     const errText = await createRes.text();
     let parsed = null;
     try { parsed = JSON.parse(errText); } catch {}
@@ -78,50 +79,42 @@ module.exports = async (req, res) => {
 
     if (createRes.status === 409 && appErr && appErr.code === 'DUPLICATE_CONTACT_EXISTS') {
       const contactId = appErr.data && appErr.data.duplicateContactId;
-      const dbg = await updateExistingContact(wix, contactId, message);
-      if (dbg.ok) {
-        return res.status(200).json({ ok: true, v: 'dbg2', path: 'updated', dbg });
-      }
-      return res.status(502).json({ error: 'Could not reach Wix CRM. Please try again shortly.', v: 'dbg2', step: 'duplicate', dbg });
+      if (contactId) await tagExistingContact(wix, contactId, message);
+      return res.status(200).json({ ok: true });
     }
 
     console.error('Wix contact creation failed:', createRes.status, errText);
-    return res.status(502).json({ error: 'Could not reach Wix CRM. Please try again shortly.', v: 'dbg2', step: 'create', status: createRes.status, detail: errText.slice(0, 300) });
+    return res.status(502).json({ error: 'Could not reach Wix CRM. Please try again shortly.' });
   } catch (err) {
     console.error('Wix request error:', err);
-    return res.status(502).json({ error: 'Could not reach Wix CRM. Please try again shortly.', v: 'dbg2', step: 'throw', detail: String(err && err.message || err) });
+    return res.status(502).json({ error: 'Could not reach Wix CRM. Please try again shortly.' });
   }
 };
 
-// Re-apply the "Website Lead" label and refresh the project details on a contact
-// that already exists. Returns true once the contact has been tagged.
-async function updateExistingContact(wix, contactId, message) {
-  if (!contactId) return { ok: false, step: 'no-id' };
+// Best-effort: tag an existing contact with the "Website Lead" label and refresh
+// the project details. Never throws — failures are logged, not surfaced, because
+// the contact already exists and the submission should still succeed.
+async function tagExistingContact(wix, contactId, message) {
+  try {
+    // Add the label (additive — keeps any existing labels). The response carries
+    // the contact's current revision, needed for the follow-up update.
+    const labelRes = await wix(`/${contactId}/labels`, 'POST', { labelKeys: [LEAD_LABEL_KEY] });
+    if (!labelRes.ok) {
+      console.error('Wix label-contact failed:', labelRes.status, await labelRes.text());
+      return;
+    }
 
-  // Add the label (additive — keeps any existing labels). The response carries
-  // the contact's current revision, needed for the follow-up update.
-  const labelRes = await wix(`/${contactId}/labels`, 'POST', { labelKeys: [LEAD_LABEL_KEY] });
-  if (!labelRes.ok) {
-    const detail = (await labelRes.text()).slice(0, 300);
-    console.error('Wix label-contact failed:', labelRes.status, detail);
-    return { ok: false, step: 'label', status: labelRes.status, detail };
-  }
-
-  // Only refresh the project brief when the visitor actually included one.
-  let updateStatus = 'skipped';
-  if (message) {
+    // Only refresh the project brief when the visitor actually included one.
+    if (!message) return;
     const revision = (await labelRes.json().catch(() => ({})))?.contact?.revision;
     const updateRes = await wix(`/${contactId}`, 'PATCH', {
       revision,
       info: { extendedFields: { items: { [PROJECT_DETAILS_KEY]: message } } },
     });
-    updateStatus = updateRes.status;
     if (!updateRes.ok) {
-      // Label is applied and the contact exists — still a success for the visitor;
-      // just log the detail-refresh failure.
       console.error('Wix update-contact failed:', updateRes.status, await updateRes.text());
     }
+  } catch (err) {
+    console.error('Wix tag-existing-contact error:', err);
   }
-
-  return { ok: true, step: 'updated', updateStatus };
 }
