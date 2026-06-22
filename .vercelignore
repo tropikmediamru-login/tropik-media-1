@@ -1,2 +1,5 @@
 backend
 .gitignore
+*.zip
+_logos_extract/
+extracted-tropik-logo/
