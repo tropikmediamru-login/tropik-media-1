@@ -3,3 +3,7 @@
 # Source asset archives (not for deploy)
 *.zip
 _logos_extract/
+
+# Raw source images dropped in the project root (trimmed copies live in logos/)
+/IMG_*.PNG
+/IMG_*.png

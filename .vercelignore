@@ -3,3 +3,5 @@ backend
 *.zip
 _logos_extract/
 extracted-tropik-logo/
+IMG_*.PNG
+IMG_*.png
